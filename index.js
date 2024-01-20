@@ -9,8 +9,10 @@ async function readExcel() {
     await workbook.xlsx.readFile("Assignment_Timecard.xlsx");
 
     // 2. Access the first worksheet:
-    const worksheet = workbook.getWorksheet(1); // Index 0 represents the first sheet
-    // 3. Iterate through rows and cells:
+    const worksheet = workbook.getWorksheet(1); // Index 1 represents the first sheet
+
+    //reading the excel sheet and adding it to a json file
+    // 3. Iterate through rows and cells:      
     // for (let row = 2; row <= worksheet.actualRowCount; row++) {
     //   const emprow = worksheet.getRow(row);
     //   const id = emprow.getCell(1).value;
@@ -34,14 +36,14 @@ async function readExcel() {
     // });
     // console.log("saved");
  
-    console.log('-----------')
+
+       //first part
     console.log('First part') 
     for (let key in data) {
-      //first part
       const set= new Set();      //creating set to find distinct dates
       for (let i in data[key].timeIn) {
         const dateTimeString = data[key].timeIn[i];   //timein date
-        const date = new Date(dateTimeString);       //day of the time using inbuilt date function 
+        const date = new Date(dateTimeString);       //day of the time using inbuilt Date class
         set.add(date.getDate());
       }
       let count=0;
